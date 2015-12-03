@@ -105,6 +105,68 @@ http://spf13.com/post/soap-vs-rest
     - safer
     - less network traffic
 
-## Continuous Integration (CI)
-
 ## Continuous Integration vs. Continuous Delivery vs. Continuous Deployment
+- CI continuous integration 
+    - (incremental) changes on a development branch are frequently merged with a master branch with frequent tests
+    - automated unit tests
+    - automated build
+
+- Continuous Delivery
+    - cont delivery to an environment once the code is ready to ship
+    - environment: UAT / Staging / Production
+    - delivers to a user base (QA-s or customers)
+    - tests include acceptance test - testing business logic
+    - small batches of changes fed to proceeding tests
+
+- Continuous Deployment
+    - release code to production as soon as it is ready
+    - no batching in staging or UAT
+    - testing is done before mergin to master on environment similar to production environment
+    - production branch is always stable and ready to be deployed in an automated manner
+
+- Tools
+    - version control system: Git
+    - issue tracking: Jira
+    - build System: Bamboo, Jenkins
+    - test frameworks: TestNG, JUnit
+    - mocking frameworks: Mockito, Easymock
+    - tests run automatically as part of build process
+    - dependency management: Maven
+
+## Mocking
+- mocking overuse: mocking pojos, static services
+- simulate behaviour of real object without the actual dependency - allows to test an object without relying on the correctness of its dependencies
+
+## Depenency Injection
+### Depenency Injection vs. Inversion of Control
+[Martin Fowler](http://martinfowler.com/articles/injection.html)
+- Inversion of Control
+    - otherwise known as the Hollywood Principle: Don't call us, we'll call you
+    - design paradigm in which the we do not know about the concrete implementation of depependecies
+    - depend on abstractions not concrete classes
+    - this is a stronger statement than "program to interfaces, not implementations"
+    - it suggests that instead of high level components depending on low-level components, both depend on abstractions
+    - eg.: Instead of PizzaStore depending on concrete Pizza classes, PizzaStore and Concrete Pizza implementations depend on the abstract Pizza Class (Head First Design Patterns)
+
+- Dependency Injection
+    - one implementation of IoC
+    - dependency is passed to the dependent object to call methods on
+    - dependency is created and configured outside of the dependent object
+
+- Other Techniques to adhere to IoC
+    - Factory Method Pattern
+    - Service Locator
+
+## Design Patterns
+- Blueprints of solutions to common problems
+- gives common vocabulary
+- tried and tested, not necessarily straightforward application of OO principles
+
+### Design Patterns in JDK
+- Observer pattern: Observable class, wait & notify
+- Builder: StringBuilder
+- Factory Method: Calendar#getInstance
+- Decorator: unmodifiable, concurrent versions of collections; Buffered.../InputStream/OutputStream/Reader/Writer/
+- FlyWeight: Integer#valueOf
+- Proxy: java.lang.reflect.Proxy
+- Chain of Responsibility
