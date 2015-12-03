@@ -163,6 +163,7 @@ http://spf13.com/post/soap-vs-rest
 - tried and tested, not necessarily straightforward application of OO principles
 
 ### Design Patterns in JDK
+[source](http://stackoverflow.com/questions/1673841/examples-of-gof-design-patterns-in-javas-core-libraries)
 - Observer pattern: Observable class, wait & notify
 - Builder: StringBuilder
 - Factory Method: Calendar#getInstance
