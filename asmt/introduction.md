@@ -16,21 +16,29 @@ As part of this archetype there is a build time integration test in place. I con
 
 This also serves the basis of our currentoy formulating testing strategy in CI environment.
 
-I am also proud of the structure of some of the team's plugin-like projects. Due to rather volatile specifications and requirements they quite frequently had to endure alterations. I am happy to say that in most of such cases it was sufficient to execute changes in the configuration, or occasionally only a minimal amount of code had to be added. To me this shows that I have managed to create a level of a straction and loose coupling in that project structure that is a good match to its evolving environment allthewhile this not hindering the ease of understanding of the project in its entirety.
-
+I am also proud of the structure I have created for some of the team's plugin projects. Due to rather volatile specifications and requirements they quite frequently had to endure alterations. I am happy to say that in most of such cases it was sufficient to make changes in configuration only, or occasionally had to add only a minimal amount of code. To me this demonstrates that I have managed to create a level of abstraction and loose coupling that is a good match to its evolving environment allthewhile not hindering the ease of understanding the project in its entirety.
 
 ### My roles in mentoring and leadership
-The most recent project in the mobile core team has been the cross-device shortlist service for mobile apps. In short, just to put it in perspective we provide an edge service between mobile applications and the more general customer data store backend. 
+The most current project I am involved with is the cross device shortlist service. This is developed within a subteam in which I have been tasked to perform a lead role.
 
-I have been tasked to lead this project within a 'sub-team' with the two newest members of the pod. This project has been ideal for ramping up the juniors with real tasks. 
+The project has proven itself to be a fertile ground for ramping up the juniors with real world problems. May tasks beside development have been
 
-The shortlist project can also be viewed as a proving ground to coordinate with the client and the owner of the backend service we rely on. 
+- Breaking down the project into stories that are generous enough that allowed the juniors to work on them with a reasonable independece,
+- yet create a structure that guides them in tackling the complexity inherent in such projects;
+- Demonstrate the progress on weekly demos to the client: my approach has been to give a broad overview of the project and hand over the stage to the respective author of a particular component to demonstrate; this has proven itself to be welcome structure
+- communicate with the owners of the backend service we consume to synchronize between the finer details of the business requirements and the api available to us for consumption.
+ 
+I am happy to say that the story breakdown of the shortlist service is a valueable blueprint for similar upcoming stories, such as the opt-in migration.
 
+---
 
+whiteboard sessions
+
+---
+Besides personal means of knowledge transfer I place great value on self-sufficient learning; to empower this I actively advocate documentation.
 
 ### Self improvement
 I place great importance on self improvement by reading technical books and articles. My interests have a broad spectrum, yet I make it a point to also read materials that feed directly into my daily work. 
-
 
 
 ## Why I think I am a viable candidate for D3 level
