@@ -18,6 +18,8 @@ This also serves the basis of our currentoy formulating testing strategy in CI e
 
 I am also proud of the structure I have created for some of the team's plugin projects. Due to rather volatile specifications and requirements they quite frequently had to endure alterations. I am happy to say that in most of such cases it was sufficient to make changes in configuration only, or occasionally had to add only a minimal amount of code. To me this demonstrates that I have managed to create a level of abstraction and loose coupling that is a good match to its evolving environment allthewhile not hindering the ease of understanding the project in its entirety.
 
+shortlist...
+
 ### My roles in mentoring and leadership
 The most current project I am involved with is the cross device shortlist service. This is developed within a subteam in which I have been tasked to perform a lead role.
 
