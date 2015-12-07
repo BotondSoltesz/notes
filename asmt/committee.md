@@ -155,7 +155,7 @@ http://spf13.com/post/soap-vs-rest
 
 - Other Techniques to adhere to IoC
     - Factory Method Pattern
-    - Service Locator
+    - Service Locator: dynamic lookup of service instance
 
 ## Design Patterns
 - Blueprints of solutions to common problems
@@ -170,4 +170,36 @@ http://spf13.com/post/soap-vs-rest
 - Decorator: unmodifiable, concurrent versions of collections; Buffered.../InputStream/OutputStream/Reader/Writer/
 - FlyWeight: Integer#valueOf
 - Proxy: java.lang.reflect.Proxy
-- Chain of Responsibility
+- Command: java.lang.runnable
+- Iterator: java.util.Iterator
+- Mediator: java.util.concurrent.ExecutorService
+- Strategy: comparator
+ 
+## Unit tests
+- test components in isolation without depending on the correctness of its dependencies
+- private methods are tested implicitly
+- 3rd party components should not be tested
+- good tests are concise
+- good tests have (near)full branch coverage
+- test one thing in one test method
+- should be easy to maintain - short, simple test methods
+- test methods should be independent of each other and the order of their execution
+
+## Performance Measuring Tools
+- profiling: jvisualvm
+- profiling metrics via graphite
+- metrics via jmx
+ 
+## How do you decide if the app is slow
+- response time
+- throughput
+
+## Java8 features
+- lambdas
+- optional
+- collection streams
+- default methids in interfaces (for compatibility of lambdas with existing collection interfaces)
+- javascript engine
+ 
+## Java9 features
+- modulraized source
