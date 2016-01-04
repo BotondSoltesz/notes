@@ -104,7 +104,7 @@ Other options to serve multiple sites:
 	- plaintext - yuck
 	- mySql db
 	- DBM files
-	
+
 ### Plaintext
 - do not place it in the document root!
 - place it at - for example - /etc/httpd/conf
@@ -306,3 +306,34 @@ Configuration directives
 		>hostname east.example.org
 		# edit `/etc/httpd/conf/httpd.conf`
 		ServerName east.example.org
+		
+## Logging
+- LogFormat ... -> named pattern
+- CustomLog file logformat-name -> output file relative to ServerRoot
+- separate CustomLog directives per VirtualHost containers
+- ErrorLog file -> write error logs to specified file
+- ErrorLog "|var/somcmd" -> pipe error logs into specified program
+- ErrorLog syslog:local3 -> sends log to system log with "local3" facility name
+- LogLevel
+
+### Server-Status handler
+status of server
+		
+		ExtendedStatus on
+		
+		<Location /server-status>
+			SetHandler server-status
+			Order deny, allow
+			Deny from all
+			Allow from loaclhost
+		</Localtion>
+		
+### Server-Info handler
+build and config of server
+
+		<Location /server-info>
+			SetHandler server-info
+			Order deny, allow
+			Deny from all
+			Allow from loaclhost
+		</Localtion>
