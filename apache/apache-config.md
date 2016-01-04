@@ -202,4 +202,76 @@ Is the transmitted copy of a file identical to the original?
 		   V         +----------+        |
 		Signature -> | transmit | -> Signature
 					 +----------+
-		
+
+1. Originator signs the **File**
+	- hash **File**
+	- encrypt hash with **Private Key**
+	- encrypted hash is the **Signature**
+2. Transmit **File** and **Signature**
+3. **File** is hashed on the receiveing end
+4. **Signature** is decrypted with **Public Key** on the receiving end
+5. If the decrypted signature and the hash calculated on the receveng end match, we have high confidence, that the received file matches the original
+
+**NB!** Important assumption: the **Public Key** belongs to the site whose **File** is checked
+
+### Digital Certificates
+- Securely identifies a web site
+- Confirms that a site's domain name and Public Key really belong together
+
+Contains:
+- Issuer's identity (CA: Ceritfication Authority)
+- Site's domain name
+- Site's **Public Key**
+- Expiry date
+- Signature of CA
+
+### Obtaining a Digital Certificate
+1. CA has a private key - public key pair
+2. Site generates a private key - public key pair
+3. Certificate request is sent to CA
+	- with the site's public key
+	- site's url and information
+4. CA creates certificate
+	- CA info
+	- Site's url and information
+	- Site's public key
+	- Digital Signature: hash of certificate encrypted with CA's private key
+5. Certificate is sent back to the site: **X.509 Certificate**
+
+### SSL -Secure Socket Layer
+- Sits above TCP
+- Verifies server identity
+- Negotiates a **Symmetric** session key
+
+### SSL Connection
+1. Browser connects to website
+2. website send **X.509** certifacte to browser
+3. browser verifies the signature of the certificate from a list of known CA-s with their public keys
+	- hash certificate
+	- decrypt signature in certificate with public key
+	- compare hash and decrypted signature
+	- if verification succeeds, browser trusts information in the certificate, in particular the site's **public key**
+4. Browser encrypts a **random value** with the site's public key
+5. Browser sends encrypted random value to the website
+6. Website decrypts random value with its private key
+7. From the shared random value both sides generate a **Symmetric Session Key**
+
+All communication is encrypted with the **Symmetric Session Key**
+
+### OpenSSL
+- creates and manages public and private keys
+- creates x.509 certificates and certificate requests
+- hashing (message digest)
+- encryption and decryption
+
+### mod_ssl
+Apache module that provides SSL support
+- mod_ssl.so
+- config file added to `/etc/httpd/conf.d` directory
+
+Configuration directives
+- `SSLCertificateFile` file that contains the site's certificate
+- `SSLCertificateKeyFile` file that contains the site's **private key**
+- `SSLCypherSuite` encryption algorithms that browsers may use
+- `SSLEngine` on | off
+- `SSLRequire` access control based on various parameters
