@@ -275,3 +275,34 @@ Configuration directives
 - `SSLCypherSuite` encryption algorithms that browsers may use
 - `SSLEngine` on | off
 - `SSLRequire` access control based on various parameters
+
+### demo
+
+		> mkdir /etc/httpd/ssl
+		> openssl req -x509 \					generate a self signed x509 certificate
+		  -nodes \								don't encrypt private key file
+		  -days 365 							set expiry date on certificate
+		  -newkey rsa:2048 \					generate a new 2048 bit rsa key
+		  -keyout /etc/httpd/ssl/apache.key \ 	name of generated key file
+		  -out /etc/httpd/ssl/apache.crt 		name of generated certificate file
+		
+		# check generated certificate
+		> openssl x509 -in /etc/http/ssl/apache.crt -text | less
+		> yum install mod_ssl
+		
+		# edit installed configuration file `/etc/httpd/conf.d/ssl.conf`
+		LoadModule ssl_module modules/mod_ssl.so
+		Listen 443
+		
+		NameVirtualHost *:443
+		<VirtualHost *:443>
+			DocumentRoot /var/www/html/east
+			ServerName east.example.org
+		</VirtualHost>
+		
+		SSLCertificateFile /etc/httpd/ssl/apache.crt
+		SSLCertificateKeyFile /etc/httpd/ssl/apache.key
+		
+		>hostname east.example.org
+		# edit `/etc/httpd/conf/httpd.conf`
+		ServerName east.example.org
