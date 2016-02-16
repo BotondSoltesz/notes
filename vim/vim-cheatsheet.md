@@ -35,7 +35,7 @@
 - `i` **i**nsert characters before cursor 
 - `I` **I**nsert at the beginning of line
 - `a` **a**ppend characters after cursor
-- 'A' **A**ppend at the end of line
+- `A` **A**ppend at the end of line
 - `s` delete characters and start insert; **s**ubstitute
 - `c{motion}` **c**hange {motion} text and start insert. e.g: `cw` delete word
 - `o` begin a new line under cursor and start insert
@@ -107,4 +107,7 @@
 
 ### Edit selected text
 - `Vr{char}` replace characters in line with {char}
-- `<Ctrl-v>{motion}c` select block, change text in selection; after returning to normal mode, chnage is applied to every line of selected block
+- `<Ctrl-v>{motion}c` select block, change text in selection; after returning to normal mode, change is applied to every line of selected block
+- `<Ctrl-v>jj$` + `A;` append a semicolon to the end of each line; also works on ragged blocks
+
+## Command Line Mode
