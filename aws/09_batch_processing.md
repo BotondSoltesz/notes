@@ -93,6 +93,19 @@
     - send notification for job done
 
 ### Preparing the queue
+- new queue in SQS management console
+- if necessary, change region in console before creating the queue
+- name should be unique for account
+- visibility timeout
+    - when item is read from queue by worker, it becomes hidden, so that it is not delivered to multiple workers
+    - worker must remove work item from queue after processing is done
+    - if item is not removed within *visibility timeout* time from queue, it becomes visible again
+- use SGS console to view details of the queue
+- note url of queue - this is what workers will use to communicate with queue via the API
 
 ### Autoscaling
-
+1. launch configuration via command line tool
+    - `as-create-launch-config myLaunchConfig --image-id ami_1234 --instance-type m1.small`
+        
+2. create autoscaling group
+    - `as-create-auto-scaling-group myAutoGroup --launch-configuration myLaunchConfig --min-size 1 --max-size 20`
