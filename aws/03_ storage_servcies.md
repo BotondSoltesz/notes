@@ -75,7 +75,35 @@ AWS Regions:
 - uploading data requires programming via REST Api or AWS SDK
 
 ## Lifecycle Management
+- transition objects from S3 to Glacier
+- S3 -> Glacier -> evict from Glacier
+- define in Bucket : Properties : Lifecycle rules
+    - rule prefix: apply to all objects matching prefix
+    - set up time for transitioning from S3 to Glacier
+    - set up expiration time after which data is evicted form Glacier
 
 ## EBS: Elastic Block Storage
+- Well suited for applications that require db / file system / access to raw block level storage
+- EBS volumes are attached to EC2 instances, exposed as storage volumes
+- Persists independently from the lifecycle of the EC2 instances
+- when not attached to an EC2 instance, you only pay for storage
+
+LifeCycle:
+1. start with unused space
+2. createVolume()
+3. attachVolume()
+4. attached and in use
+    - format from EC2 instance os
+    - mount
+5. create snapshot, save snapshot to S3
+6. detachVolume()
+7. deleted
 
 ## AWS Import / Export
+- mail storage device to S3
+- import / export is performed via Aws high speed network
+- import to
+    - S3
+    - EBS
+    - Glacier
+- export from S3
