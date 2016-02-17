@@ -54,3 +54,45 @@
         - S3: large files
 
 ## Simplified Architecture
+
+        o 1.    .---.
+        | ----> | J |---------+----------+----------+
+        ^       '---'         |          |          |
+        user    job manager   |2a.       |2b.       |2c.
+                              V          V          V
+                          .--------.    ___         O
+                          |  |  |  |    \_/        |_|
+                          '--------'                
+                          input queue   S3 bucket   DB
+                              |         |           |
+                              |3.       |4.         |4.
+                              V         |           |
+                          .-----.       |           |
+                          | EC2 |<------+-----------+
+                          '-----'
+                          EC2 instances
+                          Autoscaling Group
+                              |
+                              |5.
+                              V
+                          .--------.
+                    <-----|  |  |  |
+                          '--------'
+                          output queue
+                          
+1. user submits job to job manager
+2. job manager queues work
+    a. into queue
+    b. if data is too big, store in S3
+    c. not queriable data - store metadata in db
+3. EC2 pulls job items from queue
+4. grab work detail and work
+5. output work
+    - push original, processed images into storage & their url
+    - delete original job request
+    - send notification for job done
+
+### Preparing the queue
+
+### Autoscaling
+
