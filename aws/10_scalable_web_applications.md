@@ -4,7 +4,7 @@
 - app server tier
 - data tier
 
-
+scheme:
 
             (o) 
              |
@@ -62,7 +62,7 @@
 
 
 
-
+scheme:
                 (o)
                  |
                  V
