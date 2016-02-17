@@ -5,6 +5,7 @@
 - data tier
 
 
+
             (o) 
              |
              V
@@ -58,6 +59,8 @@
     - managing public dns
     - host security
     - load ballancing
+
+
 
 
                 (o)
