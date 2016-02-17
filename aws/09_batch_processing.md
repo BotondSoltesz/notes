@@ -106,6 +106,22 @@
 ### Autoscaling
 1. launch configuration via command line tool
     - `as-create-launch-config myLaunchConfig --image-id ami_1234 --instance-type m1.small`
-        
 2. create autoscaling group
     - `as-create-auto-scaling-group myAutoGroup --launch-configuration myLaunchConfig --min-size 1 --max-size 20`
+3. autoscaling policy
+    - no logic is added as to when it should be executed
+    - it is more like a button
+    - it is good practice to have at least 2 policies:
+        - scale up
+            - `as-put-scaling-policy myScaleUpPolicy --type PercentChangeInCapacity --auto-scaling-group myAutoGroup --adjustment 50`
+        - scale down
+            - `as-put-scaling-policy myScaleDownPolicy --type ChangeInCapacity --autos-caling-group myAutoGroup --adjustment -1`
+    - a new instance is time consuming
+        - up in large increments
+        - down in small steps
+4. triggering autoscaling
+    - manually via command line or API
+    - scheduled
+    - as a response to **Amazon Cloud Watch** alarm
+        - created from Cloud Watch console
+        - by default metrics are read every 5 minutes - not instantaneous
