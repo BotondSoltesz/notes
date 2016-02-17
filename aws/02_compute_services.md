@@ -1,5 +1,4 @@
-# Amazon Products & Services
-## Amazon Compute Services
+# Amazon Compute Services
 - launch & connect to an EC2 instances
     - EC2: web service that provides resizabe compute capacity in the cloud
     - Boot new instances in minutes
@@ -11,14 +10,14 @@
     - hosted Hadoop framework
     - instantly provision arbitrary capacity
 
-### AMI: Amazon Machine Images
+## AMI: Amazon Machine Images
 - EC2 instances are created from AMI
 - template for root volume
 - launch permissions
 - block device mapping - which volumes to attach when launching
 - to create an instance: launch a public AMI & customize
 
-### Steps to use EC2
+## Steps to use EC2
 EC2 management console > launch instance > wizard
 
 1. select preconfigured AMI or create AMI with applications, libs, data,...
@@ -35,13 +34,11 @@ EC2 management console > launch instance > wizard
     - encryption keys
     - firawall settings (with security groups)
 
-### Autoscaling
+## Autoscaling
 - enabled by cloud watch
 - no additional fees besides regular cloud watch fees
 - number of EC2 instances by demand
 
-### EMR: Elastic Map Reduce
+## EMR: Elastic Map Reduce
 - uses Apache Hadoop framework
 - EC2 -> EMR -> Cloud Watch, S3
-
-## AWS Storage Services
