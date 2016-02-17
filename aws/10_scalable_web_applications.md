@@ -110,5 +110,19 @@ scheme:
 ### Notes
 - EC: ElastiCache removes load from db
 - multiple availability zones within a region
-- Amazon Cloud Front: content delivery
 - S3: backup and static content
+
+### Amazon Cloud Front
+- content delivery
+- requests are routed to nearest edge location
+- optimized to work seamlessly with other Amazon services: S3, EC2
+- also works well with non-amazon origin servers
+
+### managing dns routing: Route53
+- queries for domains are routed to nearest dns server
+- resolves domain requests to Elastic Load Ballancer, zone apex record
+
+### Host Security
+- security groups: network security at host level (by EC2 instances) by network traffic filtering
+- each EC2 instance can have multiple security groups assigned
+- can limit access to EC2 instances to specific subnets, ip ranges
