@@ -12,7 +12,7 @@
 - archiving: moving data that is no longer used actively for long term retention; archives are indexed to enable searching, restoring of files or parts of files
 - disaster recovery: process + policies + procedures for recovery and continuation of tech infrastructure after a dsiaster
 
-## AWS for Backup and Arhive
+## AWS for Backup and Archive
 ### traditional approach
 - data to tape
 - transfer tapes off-site
