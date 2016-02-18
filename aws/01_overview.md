@@ -72,7 +72,6 @@ Foundation Services:
 - dynamically grow/shrink resources based on traffic
 - seamlessly integrates with autoscaling
 - single CName (entry point for DNS config)
-- 
 
 ## Database
 ### RDS
