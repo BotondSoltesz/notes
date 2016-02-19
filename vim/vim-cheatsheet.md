@@ -111,3 +111,58 @@
 - `<Ctrl-v>jj$` + `A;` append a semicolon to the end of each line; also works on ragged blocks
 
 ## Command Line Mode
+- `:{address}` go to address (line)
+- `:[range]print` echo contents of range in prompt
+- `:[range]delete [x]` delete range lines into register x
+- `:[range]yank [x]` copy range lines into register x
+- `:[line]put [x]` put text from register x after specified line
+- `:[range]copy {address}` copy specified lines after address
+- `:[range]move {address}` move specified lines after address
+- `:[range]join` join lines
+- `:[range]normal {commands}` execute normal mode commands on range
+- `:[range]substitue/{pattern}/{string}/[flags]` replace occurrances of {pattern} with {string} on specified lines
+- `:[range]global/{pattern}/[cmd]` execute ex command cmd on specified lines matching {pattern}
+
+### shorthands
+| shorthand | ex command |
+| --- | --- |
+| `:t` | `:copy` |
+| `:m` | `:move` |
+| `@:` | repeat last ex command |
+
+### ranges
+| range | description |
+| --- | --- |
+| `.` | current line - default when range / address is ommitted |
+| `$` | last line |
+| `%` | all lines |
+| `1` | first line |
+| `21` | line 21 |
+| `1,21` | from line 1 to 21 inclusive |
+| `.+1,$` | from line after current line to end |
+| `.,.+5` | from current to current +5 lines (6 in total) |
+| `.5` | same as `.+5` |
+| `'<` | first line of visual selection |
+| `'>` | last line of visual selection |
+| `/{start pattern}/,/{end pattern}/` | specify range with pattern |
+
+### tab complete
+- `<Tab>` complete ex command / cylce through completions
+- `<Shift-Tab>` cycle through completions backwards
+- `<Ctrl-d>` show possible completeions
+
+### command history
+- `:` followed by `<Up>` or `<Down>`
+- `q:` open command line window with history of ex commands
+    - edit like any other text in buffer
+    - `<Enter>` to execute
+    - `:q` to close
+- `q/` open command line window with history of searches
+
+### run commands in the shell
+- `:!{cmd}` execute shell-command cmd
+- `:[range]!{cmd}` take range as input for shell command, replace with output; in other words filter range through an external program
+- `:shell` start an interactive shell
+    - `exit` to endd shell session
+- `:read !{cmd}` read output of shell command {cmd} into buffer
+- `:write !{cmd}` use contents of buffer as standard input for {cmd}
