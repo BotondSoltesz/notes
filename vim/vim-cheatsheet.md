@@ -1,7 +1,6 @@
 # Vim Cheat Sheet
 
 ## Normal Mode
-
 ### Command Reference
 - `:h <cmd>`
 
@@ -166,3 +165,28 @@
     - `exit` to endd shell session
 - `:read !{cmd}` read output of shell command {cmd} into buffer
 - `:write !{cmd}` use contents of buffer as standard input for {cmd}
+
+---
+
+# Files & Buffers
+- `:ls` list buffers
+- `:[N]b[uffer] N` jump to buffer N (number according to :ls)
+- `:bp[rev]` previous in list of buffers
+- `:bn[ext]` next in list of buffers
+- `:bf[irst]`  first in list of buffers
+- `:bl[ast]` last in list of buffers
+- `:bd[elete] N1 N2 N3` delete buffers N1, N2, N3
+- `:N,M bd[elete]` delete buffers in range N - M
+- `:args` print arguments vim was started with; [] indicates active file in list
+- `:args {arglist}` add files to argument list
+    - `*` filname wildcard in current dir
+    - `**` filename wildcard that recurses into subdirectories
+
+## save, revert, quit
+- `:w[rite]` write contents of current buffer to disk
+- `:e[dit]!` revert changes
+- `:qa[ll]!` close all windows, discard changes without warning
+- `:wa[ll]` write all modified buffers to disk
+
+## split windows
+- *window*: viewport onto a buffer
