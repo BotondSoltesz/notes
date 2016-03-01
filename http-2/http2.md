@@ -126,6 +126,12 @@
     - `:path`
     - `:status`
 
+#### Other Frames
+- PING: see if connection is still alive
+- GOAWAY
+    - gracefully shut down a connection or 
+    - signal a serious error
+
 #### HPAC: Header Compression
 - Huffmann encoding with
 - a Static Table
@@ -248,3 +254,77 @@
 - flow control is hop-to-hop
 
 # Server Push
+- server can push resources to the client without the client having to request them
+    - eg.: client requests index.html
+    - server sends index.html
+    - pushes styles.css and scripts.js (without explicit request)
+- server responds with a PUSH_PROMISE frame to the original request, carrying a stream id
+- PUSH_PROMISE frame has a Header Block Fragment
+- anything sent as a push promise 
+    - needs to be safe
+    - cachable
+    - no request body
+    - `SETTINGS_ENABLE_PUSH`
+- client can decline a push with a RST_STREAM frame
+- can be used for cache invalidation
+- not a replacement for web sockets
+
+# TSL, SSL, HTTP/2
+- most vendors don't support plaintext over http/2, only over TLS
+- TLS
+    - symmetric encryption
+    - authentication
+    - integrity
+- TLS handshake
+    - asymmetric handshake
+    - asymmetric encryption is only used for the key exchange
+    - adds initial overhead
+- ALPN is an extension to TLS hanshake
+    - instead of the extra UPGRADE message exchange
+    - protocol negotiation is part of the TLS handshake (via the ALPN extension)
+    - not tied to http2, in the future it can be used for other protocols as well
+
+# Caches & Proxies
+- etag: hash of resource to check cache validity
+- `Cache-Control: max-age=3600` overrides `Expires` by date
+    - how long a resource has before it expires 
+    - `Cache-Control: no-store`: do not cache
+    - `Cache-Control: public`: can be cached
+    - `Cache-Control: private`: can only be cached by browser
+
+# Http/2 servers & Libs
+## Servers with Http/2 support:
+- Apache Http 2.4.17+
+- Jetty 9.3+
+- Tomcat 9
+
+## Client Side Libraries
+- Netty
+- Jetty
+- OkHttp
+
+## Http/2 on JVM tidbits
+- jdk 8 required 
+- need ALPN (Application Layer Protocol Negotiation) extension jar on classpath
+    - extension will be included in jdk 9
+
+## High Level Client Requests with OkHttp
+ALPN Extension on the classpath as VM option: `-Xbootclasspath/p:alpn-boot-8.0.0.v20140317.jar`
+
+        OkHttpClient client = new OkHttpClient();
+        Request.Builder builder = new Request.Builder();
+        Request request = builder.url("https://http2.golang.org").build();
+        Response response = client.newCall(request).execute();
+        ... response.body()
+        ... response.headers()
+        
+- without the ALPN extension, protocol negotioation will fail
+- high level api looks identical to Http 1.x client
+
+## Low level Client Requests with Netty
+- **NB!** Netty Server does not support Http/2 over plaintext
+- **TODO!** See Netty Hello World Client example
+- Low level api with access to:
+    - streams
+    - header frames
+    - via event handlers
