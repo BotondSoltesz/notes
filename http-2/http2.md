@@ -76,6 +76,7 @@
     - CONTINUATION
 
 
+
         +-----------------------------------+
         | Length (24 bits)                  |
         +---------------+-----------------+-+
@@ -100,6 +101,7 @@
 - Headers may be sent in multiple frames
     - Flags: EndHeaders, EndStream indicate if frame is last
     - or followed by CONTINUATION frames
+
 
 
         +--------------------+
@@ -151,6 +153,7 @@
 - `SETTINGS_INITIAL_WINDOW_SIZE`
 - `SETTINGS_MAX_FRAME_SIZE`
 - `SETTINGS_MAX_HEADER_LIST_SIZE`
+
 
 
         +----------------------+
@@ -218,6 +221,7 @@
         - Stream 3 & Stream 4 have dependency on Stream 1
         - Stream 2 has dependency on Stream 4
         - Stream 5 has dependency on Stream 1 and has E Exclusive flag set
+
 
 
         .-----------.                                   .----------.
