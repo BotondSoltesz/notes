@@ -321,10 +321,65 @@ ALPN Extension on the classpath as VM option: `-Xbootclasspath/p:alpn-boot-8.0.0
 - without the ALPN extension, protocol negotioation will fail
 - high level api looks identical to Http 1.x client
 
-## Low level Client Requests with Netty
-- **NB!** Netty Server does not support Http/2 over plaintext
-- **TODO!** See Netty Hello World Client example
-- Low level api with access to:
-    - streams
-    - header frames
-    - via event handlers
+## Low level Client Requests
+- with Jetty
+- **NB!** Most servers does not support Http/2 over plaintext
+
+Sources:
+- https://gist.github.com/judepereira/84f22fdf67ed6dd4d7d3
+- https://github.com/CleverTap/apns-http2
+- http://www.eclipse.org/jetty/documentation/current/http-client.html
+
+- [Jetty Http/2 getting started](http://www.eclipse.org/jetty/documentation/current/http2.html)
+> To use HTTP/2 in Jetty via a TLS connector you need to add the ALPN boot Jar in the boot classpath. This is done automatically when using the jetty distributions start.jar module system, but must be configured directly otherwise.
+- [oracle blog post on jetty+http2+alpn](https://blogs.oracle.com/brewing-tests/entry/http_2_with_jetty_server)
+- [ALPN](http://www.eclipse.org/jetty/documentation/current/alpn-chapter.html#alpn-starting)
+    - jvm has to be started as `java -Xbootclasspath/p:<path_to_alpn_boot_jar> ...`
+    - ALPN version must match OpenJDK version
+
+        | ALPN | OpenJDK |
+        | --- | --- |
+        | 1.8.0 | 8.1.0.v20141016 |
+        | 1.8.0u05 | 8.1.0.v20141016 |
+        | 1.8.0u11 | 8.1.0.v20141016 |
+        | 1.8.0u20 | 8.1.0.v20141016 |
+        | 1.8.0u25 | 8.1.2.v20141202 |
+        | 1.8.0u31 | 8.1.3.v20150130 |
+        | 1.8.0u40 | 8.1.3.v20150130 |
+        | 1.8.0u45 | 8.1.3.v20150130 |
+        | 1.8.0u51 | 8.1.4.v20150727 |
+        | 1.8.0u60 | 8.1.5.v20150921 |
+        | 1.8.0u65 | 8.1.6.v20151105 |
+        | 1.8.0u66 | 8.1.6.v20151105 |
+        | 1.8.0u71 | 8.1.7.v20160121 |
+        | 1.8.0u72 | 8.1.7.v20160121 |
+        | 1.8.0u73 | 8.1.7.v20160121 |
+        | 1.8.0u74 | 8.1.7.v20160121 |
+
+
+        <dependency>
+        	<groupId>org.mortbay.jetty.alpn</groupId>
+        	<artifactId>alpn-boot</artifactId>
+        	<version>${alpn.version}</version>
+        </dependency>
+
+Dependencies:
+
+        <dependency>
+        	<groupId>org.eclipse.jetty.http2</groupId>
+        	<artifactId>http2-common</artifactId>
+        	<version>9.3.7.v20160115</version>
+        </dependency>
+        
+        <dependency>
+        	<groupId>org.eclipse.jetty.http2</groupId>
+        	<artifactId>http2-client</artifactId>
+        	<version>9.3.7.v20160115</version>
+        </dependency>
+
+        <dependency>
+        	<groupId>org.eclipse.jetty.http2</groupId>
+        	<artifactId>http2-hpack</artifactId>
+        	<version>9.3.7.v20160115</version>
+        </dependency>
+
