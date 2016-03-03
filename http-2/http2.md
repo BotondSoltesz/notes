@@ -325,11 +325,10 @@ ALPN Extension on the classpath as VM option: `-Xbootclasspath/p:alpn-boot-8.0.0
 - with Jetty
 - **NB!** Most servers does not support Http/2 over plaintext
 
-Sources:
+### Sources
 - https://gist.github.com/judepereira/84f22fdf67ed6dd4d7d3
 - https://github.com/CleverTap/apns-http2
 - http://www.eclipse.org/jetty/documentation/current/http-client.html
-
 - [Jetty Http/2 getting started](http://www.eclipse.org/jetty/documentation/current/http2.html)
 > To use HTTP/2 in Jetty via a TLS connector you need to add the ALPN boot Jar in the boot classpath. This is done automatically when using the jetty distributions start.jar module system, but must be configured directly otherwise.
 - [oracle blog post on jetty+http2+alpn](https://blogs.oracle.com/brewing-tests/entry/http_2_with_jetty_server)
@@ -356,15 +355,7 @@ Sources:
         | 1.8.0u73 | 8.1.7.v20160121 |
         | 1.8.0u74 | 8.1.7.v20160121 |
 
-
-
-        <dependency>
-        	<groupId>org.mortbay.jetty.alpn</groupId>
-        	<artifactId>alpn-boot</artifactId>
-        	<version>${alpn.version}</version>
-        </dependency>
-
-Dependencies:
+### Dependencies
 
         <dependency>
         	<groupId>org.eclipse.jetty.http2</groupId>
@@ -384,3 +375,8 @@ Dependencies:
         	<version>9.3.7.v20160115</version>
         </dependency>
 
+        <dependency>
+        	<groupId>org.mortbay.jetty.alpn</groupId>
+        	<artifactId>alpn-boot</artifactId>
+        	<version>${alpn.version}</version>
+        </dependency>
