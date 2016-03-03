@@ -357,6 +357,7 @@ Sources:
         | 1.8.0u74 | 8.1.7.v20160121 |
 
 
+
         <dependency>
         	<groupId>org.mortbay.jetty.alpn</groupId>
         	<artifactId>alpn-boot</artifactId>
