@@ -108,9 +108,7 @@
 - `Vr{char}` replace characters in line with {char}
 - `<Ctrl-v>{motion}c` select block, change text in selection; after returning to normal mode, change is applied to every line of selected block
 - `<Ctrl-v>jj$` + `A;` append a semicolon to the end of each line; also works on ragged blocks
-
-### Prepend to multiple lines
-- `<Ctrl-v>{motion}` + `<Shift-i>` + Type text + `<esc>` select visual block, insert at beginning, type change
+- `<Ctrl-v>{motion}` + `<Shift-i>` + Type text + `<esc>` Prepend to multiple lines: select visual block, insert at beginning, type change
 
 ## Command Line Mode
 - `:{address}` go to address (line)
